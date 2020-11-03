@@ -1,0 +1,41 @@
+version: '3'
+services:
+  ceos1:
+    hostname: ceos1
+    container_name: ceos1
+    image: "ceos:4.24.2.2F"
+    command: /sbin/init  systemd.setenv=INTFTYPE=eth systemd.setenv=ETBA=1 systemd.setenv=SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT=1 systemd.setenv=CEOS=1 systemd.setenv=EOS_PLATFORM=ceoslab syste
+md.setenv=container=docker
+    privileged: true
+    environment:
+      INTFTYPE: eth
+      ETBA: 1
+      SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1
+      CEOS: 1
+      EOS_PLATFORM: ceoslab
+      container: docker
+    networks:
+      default:
+      net1:
+      net2:
+  ceos2:
+    hostname: ceos2
+    container_name: ceos2
+    image: "ceos:4.24.2.2F"
+    command: /sbin/init  systemd.setenv=INTFTYPE=eth systemd.setenv=ETBA=1 systemd.setenv=SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT=1 systemd.setenv=CEOS=1 systemd.setenv=EOS_PLATFORM=ceoslab syste
+md.setenv=container=docker
+    privileged: true
+    environment:
+      INTFTYPE: eth
+      ETBA: 1
+      SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1
+      CEOS: 1
+      EOS_PLATFORM: ceoslab
+      container: docker
+    networks:
+      default:
+      net1:
+      net2:
+networks:
+  net1:
+  net2:
